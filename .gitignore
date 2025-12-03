@@ -1,0 +1,24 @@
+# Python
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+env.bak/
+venv.bak/
+
+# Data
+data/raw/*
+data/processed/*
+
+# Keep folders, track .gitkeep only
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
