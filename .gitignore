@@ -11,10 +11,12 @@ venv.bak/
 # Data
 data/raw/*
 data/processed/*
+data/structured/*
 
 # Keep folders, track .gitkeep only
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+!data/structured/.gitkeep
 
 # Jupyter
 .ipynb_checkpoints/
