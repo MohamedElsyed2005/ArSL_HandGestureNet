@@ -106,22 +106,24 @@ def organize_images_by_class(images_dir, labels_dir, output_dir):
 # image_dir = "/ArSL_HandGestureNet/src/../data/raw/data/unaugmented/416/train/images/"
 # labels_dir = "/ArSL_HandGestureNet/src/../data/raw/data/unaugmented/416/train/labels/"
 # output_dir = "/ArSL_HandGestureNet/src/../data/structured/train_structured"
+
+# Train data
 organize_images_by_class(
-    images_dir = os.path.join(BASE_DIR, "../data/raw/data/unaugmented/416/train/images/"),
-    labels_dir = os.path.join(BASE_DIR, "../data/raw/data/unaugmented/416/train/labels/"),
+    images_dir = os.path.join(BASE_DIR, "../data/raw/unaugmented/416/train/images/"),
+    labels_dir = os.path.join(BASE_DIR, "../data/raw/unaugmented/416/train/labels/"),
     output_dir = os.path.join(BASE_DIR, "../data/structured/train_structured")
 )
 
 # Valid data
 organize_images_by_class(
-    images_dir = os.path.join(BASE_DIR, "../data/raw/data/unaugmented/416/valid/images/"),
-    labels_dir = os.path.join(BASE_DIR, "../data/raw/data/unaugmented/416/valid/labels/"),
+    images_dir = os.path.join(BASE_DIR, "../data/raw/unaugmented/416/valid/images/"),
+    labels_dir = os.path.join(BASE_DIR, "../data/raw/unaugmented/416/valid/labels/"),
     output_dir = os.path.join(BASE_DIR, "../data/structured/valid_structured")
 )
 
-# Test Data
+# Test data
 organize_images_by_class(
-    images_dir = os.path.join(BASE_DIR, "../data/raw/data/unaugmented/416/test/images/"),
-    labels_dir = os.path.join(BASE_DIR, "../data/raw/data/unaugmented/416/test/labels/"),
+    images_dir = os.path.join(BASE_DIR, "../data/raw/unaugmented/416/test/images/"),
+    labels_dir = os.path.join(BASE_DIR, "../data/raw/unaugmented/416/test/labels/"),
     output_dir = os.path.join(BASE_DIR, "../data/structured/test_structured")
 )
