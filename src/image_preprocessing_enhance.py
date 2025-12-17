@@ -158,48 +158,6 @@ class SafeEnhancer:
         return img
 
 # =========================
-# CENTER CROP (CRITICAL STEP)
-# =========================
-def center_crop(img, size=IMG_SIZE):
-    """
-    Cut out the center part of the image where the hand usually is
-    
-    Why do this?
-    - Our dataset has hands mostly in the center
-    - Removes distracting background stuff (walls, furniture, etc.)
-    - Makes the CNN focus on the hand, not the room
-    
-    The 85% number:
-    - We tested different percentages:
-    - 70%: Cut off fingers sometimes 
-    - 80%: Still cut fingers occasionally 
-    - 85%: Never cut fingers, removes most background (WE USE THIS)
-    - 90%: Safe but keeps too much background 
-    
-    Input: img (any size)
-    Output: cropped and resized to 224x224
-    """
-    h, w = img.shape[:2] # Get image height and width
-
-    # Calculate how big our crop should be
-    # We use 85% of the smaller dimension (height or width)
-    crop_size = int(min(h, w) * 0.85)
-
-    # Find the center point
-    cx, cy = w // 2, h // 2
-
-    # Calculate top-left corner of our crop box
-    x1 = max(cx - crop_size // 2, 0) # max() prevents going outside image
-    y1 = max(cy - crop_size // 2, 0)
-
-    # Cut out the center square
-    crop = img[y1:y1+crop_size, x1:x1+crop_size]
-
-    # Resize to exactly 224x224
-    crop = cv2.resize(crop, (size, size))
-    return crop
-
-# =========================
 # DATASET PROCESSING FUNCTION
 # =========================
 def process_dataset(input_dir, output_dir):
@@ -252,11 +210,9 @@ def process_dataset(input_dir, output_dir):
             # STEP 1: Enhance the image
             img_e = enh.enhance(img)
 
-            # STEP 2: Crop to center
-            img_final = center_crop(img_e)
 
-            # STEP 3: Save processed image
-            cv2.imwrite(os.path.join(out_cls, img_name), img_final)
+            # STEP 2: Save processed image
+            cv2.imwrite(os.path.join(out_cls, img_name), img_e)
 
             # Keep a log entry
             log.append({
